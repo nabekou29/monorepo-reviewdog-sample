@@ -1,0 +1,37 @@
+name: reviewdog-2
+on:
+  workflow_dispatch: # pull_request をコメントアウトしてもエラーにならないように
+  # pull_request:
+  #   types: [opened, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: reviewdog/action-setup@v1
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: run eslint
+        run: pnpm run lint:reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
