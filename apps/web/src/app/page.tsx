@@ -1,7 +1,7 @@
 import { Button, Card } from '@monorepo/ui';
 
 export default function Home() {
-  const unused = 'This variable is unused';
+  const unused = 'This variable is unused 2';
 
   return (
     <div className="space-y-8">

@@ -28,8 +28,8 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
   disabled = false,
 }) => {
-  console.debug('Button rendered');
-  const unused = 'This variable is unused';
+  const unused = 'This variable is unused 2';
+  console.debug('Button rendered 2');
 
   // 実際のプロジェクトではスタイリングライブラリを使用するかもしれませんが、
   // ここではシンプルにするためにインラインスタイルを使用します
