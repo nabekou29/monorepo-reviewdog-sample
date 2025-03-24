@@ -1,12 +1,14 @@
 name: reviewdog-1
 on:
   pull_request:
-    types: [opened, synchronize]
+    types:
+      - opened
+      - synchronize
     paths:
       - '**/*.{js,jsx,ts,tsx}'
       - '**/package.json'
       - '**/pnpm-lock.yaml'
-      - '.github/workflows/reviewdog-1.yaml'
+      - '.github/workflows/reviewdog-1.yml'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
@@ -15,6 +17,9 @@ concurrency:
 jobs:
   eslint:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
     timeout-minutes: 10
     strategy:
       matrix:
