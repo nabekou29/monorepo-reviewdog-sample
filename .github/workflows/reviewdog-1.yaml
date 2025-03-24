@@ -1,0 +1,43 @@
+name: reviewdog-1
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - '**/*.{js,jsx,ts,tsx}'
+      - '**/package.json'
+      - '**/pnpm-lock.yaml'
+      - '.github/workflows/reviewdog-1.yaml'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  eslint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        include:
+          - name: web
+            working-directory: apps/web
+          - name: ui
+            working-directory: packages/ui
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - uses: reviewdog/action-eslint@v1
+        with:
+          workdir: ${{ matrix.working-directory }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
