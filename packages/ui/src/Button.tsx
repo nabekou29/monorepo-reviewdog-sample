@@ -29,6 +29,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled = false,
 }) => {
   console.debug('Button rendered');
+  const unused = 'This variable is unused';
 
   // 実際のプロジェクトではスタイリングライブラリを使用するかもしれませんが、
   // ここではシンプルにするためにインラインスタイルを使用します
