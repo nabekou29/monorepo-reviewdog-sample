@@ -3,6 +3,7 @@ import { Button, Card } from '@monorepo/ui';
 export default function Home() {
   return (
     <div className="space-y-8">
+      <img src="https://placehold.jp/150x150.png" />
       <section>
         <h2 className="text-2xl font-bold mb-4">UI Components Demo</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
