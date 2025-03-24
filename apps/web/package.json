@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --config eslint.config.mjs 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:reviewdog": "eslint --format=rdjson 'src/**/*.{js,jsx,ts,tsx}' | reviewdog -f=rdjson -name=eslint-web -reporter=${REVIEWDOG_REPORTER:-'github-pr-review'}"
+    "lint": "eslint",
+    "lint:reviewdog": "eslint --format=rdjson | reviewdog -f=rdjson -name=eslint-web -reporter=${REVIEWDOG_REPORTER:-'github-pr-review'}"
   },
   "dependencies": {
     "@monorepo/ui": "workspace:*",

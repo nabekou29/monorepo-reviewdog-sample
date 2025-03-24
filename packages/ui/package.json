@@ -5,8 +5,8 @@
   "main": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
-    "lint": "eslint --config eslint.config.mjs 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:reviewdog": "eslint --format=rdjson 'src/**/*.{js,jsx,ts,tsx}' | reviewdog -f=rdjson -name=eslint-ui -reporter=${REVIEWDOG_REPORTER:-'github-pr-review'}"
+    "lint": "eslint",
+    "lint:reviewdog": "eslint --format=rdjson | reviewdog -f=rdjson -name=eslint-ui -reporter=${REVIEWDOG_REPORTER:-'github-pr-review'}"
   },
   "dependencies": {
     "react": "^19.0.0",
