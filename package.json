@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "lint": "pnpm -r lint",
-    "lint:reviewdog": "pnpm -r lint:reviewdog",
+    "lint:reviewdog": "pnpm -r --parallel lint:reviewdog",
     "format": "prettier --write \"**/*.{js,ts,mjs,jsx,tsx,json,md}\"",
     "format:check": "prettier --check \"**/*.{js,ts,mjs,jsx,tsx,json,md}\""
   },
