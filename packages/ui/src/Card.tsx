@@ -23,7 +23,7 @@ export interface CardProps {
  * 汎用カードコンポーネント
  */
 export const Card: React.FC<CardProps> = ({ children, title, width = '100%', onClick }) => {
-  console.debug('Card rendered');
+  console.debug('Card rendered 1');
 
   const cardStyle: React.CSSProperties = {
     width,
