@@ -1,6 +1,8 @@
 import { Button, Card } from '@monorepo/ui';
 
 export default function Home() {
+  const unused = 'This variable is unused';
+
   return (
     <div className="space-y-8">
       <img src="https://placehold.jp/150x150.png" />
