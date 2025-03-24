@@ -31,6 +31,6 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: run eslint
-        run: pnpm run lint:reviewdog
+        run: pnpm -rc exec "bash $(git rev-parse --show-toplevel)/scripts/eslint-reviewdog.sh"
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
